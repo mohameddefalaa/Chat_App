@@ -1,3 +1,4 @@
+import 'package:chatapp/Widgets/Custome_text_field.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,34 @@ class _Login_ViewState extends State<Login_View> {
               Text(
                 'Hello  are you ready to chat, Enjoy ',
                 style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              custome_textFormField(
+                hintText: 'Email ',
+                customeicon: Icon(Icons.email),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              custome_textFormField(
+                hintText: 'Password ',
+                customeicon: Icon(Icons.password),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forget Password?",
+                        style: Theme.of(context).textTheme.labelLarge,
+                      )),
+                ],
               )
             ],
           ),
