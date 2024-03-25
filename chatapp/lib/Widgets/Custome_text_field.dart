@@ -4,13 +4,13 @@ import 'package:iconsax/iconsax.dart';
 
 class custome_textFormField extends StatefulWidget {
   custome_textFormField({
-    this.hideicon = const SizedBox(),
+    this.hideicon = true,
     required this.ishidetext,
     required this.hintText,
     required this.customeicon,
     required this.controller,
   });
-  Widget hideicon;
+  bool hideicon;
   final String hintText;
   final Icon customeicon;
   bool ishidetext;
@@ -32,7 +32,17 @@ class _custome_textFormFieldState extends State<custome_textFormField> {
           hintText: widget.hintText,
           hintStyle: Theme.of(context).textTheme.titleSmall,
           prefixIcon: widget.customeicon,
-          suffixIcon: widget.hideicon,
+          suffixIcon: widget.hideicon
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.ishidetext = !widget.ishidetext;
+                    });
+                  },
+                  icon: widget.ishidetext
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off))
+              : SizedBox(),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(16),

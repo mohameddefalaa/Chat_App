@@ -19,7 +19,6 @@ class Login_View extends StatefulWidget {
 class _Login_ViewState extends State<Login_View> {
   TextEditingController passcontroller = TextEditingController();
   TextEditingController emailcontrller = TextEditingController();
-  bool ishidden = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +44,7 @@ class _Login_ViewState extends State<Login_View> {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               custome_textFormField(
+                hideicon: false,
                 ishidetext: false,
                 controller: emailcontrller,
                 hintText: 'Email ',
@@ -53,15 +53,17 @@ class _Login_ViewState extends State<Login_View> {
               custome_textFormField(
                 ishidetext: true,
                 controller: passcontroller,
-                hideicon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        ishidden = !ishidden;
-                      });
-                    },
-                    icon: ishidden
-                        ? const Icon(Icons.visibility)
-                        : const Icon(Icons.visibility_off)),
+                hideicon: true,
+                //
+                // IconButton(
+                //     onPressed: () {
+                //       setState(() {
+                //         ishidden = !ishidden;
+                //       });
+                //     },
+                //     icon: ishidden
+                //         ? const Icon(Icons.visibility)
+                //         : const Icon(Icons.visibility_off)),
                 hintText: 'Password ',
                 customeicon: Icon(Iconsax.password_check),
               ),
