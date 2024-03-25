@@ -26,6 +26,7 @@ class _custome_textFormFieldState extends State<custome_textFormField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: TextFormField(
+        validator: (value) => value!.isEmpty ? " this filed is required" : null,
         obscureText: widget.ishidetext,
         controller: widget.controller,
         decoration: InputDecoration(

@@ -2,10 +2,8 @@ import 'package:chatapp/constant.dart';
 import 'package:flutter/material.dart';
 
 class elevated_button extends StatelessWidget {
-  const elevated_button({
-    super.key,
-  });
-
+  elevated_button({super.key, required this.onpresed});
+  void Function() onpresed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -15,7 +13,7 @@ class elevated_button extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           padding: const EdgeInsets.all(16)),
-      onPressed: () {},
+      onPressed: onpresed,
       child: const Center(
         child: Text(
           'LOGIN',

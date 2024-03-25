@@ -12,15 +12,16 @@ class Custome_line extends StatelessWidget {
         Flexible(
           flex: 1,
           child: Divider(
+            thickness: 0.9,
             color: Theme.of(context).colorScheme.onBackground,
           ),
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            'Or',
+            'or',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.normal,
               fontSize: 16,
             ),
           ),
@@ -28,6 +29,7 @@ class Custome_line extends StatelessWidget {
         Flexible(
           flex: 1,
           child: Divider(
+            thickness: 0.9,
             color: Theme.of(context).colorScheme.onBackground,
           ),
         ),

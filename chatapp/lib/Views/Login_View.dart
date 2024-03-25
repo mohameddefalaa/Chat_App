@@ -20,6 +20,8 @@ class Login_View extends StatefulWidget {
 class _Login_ViewState extends State<Login_View> {
   TextEditingController passcontroller = TextEditingController();
   TextEditingController emailcontrller = TextEditingController();
+  final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,35 +46,87 @@ class _Login_ViewState extends State<Login_View> {
                 'Hello  are you ready to chat, Enjoy ',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              custome_textFormField(
-                hideicon: false,
-                ishidetext: false,
-                controller: emailcontrller,
-                hintText: 'Email ',
-                customeicon: Icon(Icons.email),
-              ),
-              custome_textFormField(
-                ishidetext: true,
-                controller: passcontroller,
-                hideicon: true,
-                hintText: 'Password ',
-                customeicon: Icon(Iconsax.password_check),
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              custome_form(
+                  emailcontrller: emailcontrller,
+                  passcontroller: passcontroller),
+
+              // const outlined_button(),
+              const Custome_line(),
+              Row(
                 children: [
-                  text_button(),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: 2,
+                          color: Theme.of(context).colorScheme.onBackground),
+                    ),
+                    child: ClipOval(
+                      child: Icon(Icons.facebook_outlined),
+                    ),
+                  ),
                 ],
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: elevated_button(),
-              ),
-              const outlined_button(),
-              const Custome_line()
+              )
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class custome_form extends StatelessWidget {
+  custome_form({
+    super.key,
+    required this.emailcontrller,
+    required this.passcontroller,
+  });
+
+  final TextEditingController emailcontrller;
+  final TextEditingController passcontroller;
+
+  @override
+  final formkey = GlobalKey<FormState>();
+  Widget build(BuildContext context) {
+    return Form(
+      key: formkey,
+      child: Column(
+        children: [
+          custome_textFormField(
+            hideicon: false,
+            ishidetext: false,
+            controller: emailcontrller,
+            hintText: 'Email ',
+            customeicon: Icon(Icons.email),
+          ),
+          custome_textFormField(
+            ishidetext: true,
+            controller: passcontroller,
+            hideicon: true,
+            hintText: 'Password ',
+            customeicon: Icon(Iconsax.password_check),
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              text_button(),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: elevated_button(
+              onpresed: () {
+                if (formkey.currentState!.validate()) {
+                  print('done');
+                }
+                ;
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
