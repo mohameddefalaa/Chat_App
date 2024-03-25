@@ -1,4 +1,6 @@
-import 'package:chatapp/Widgets/custome_Button.dart';
+import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
+import 'package:chatapp/Widgets/Buttones/outlined_button.dart';
+import 'package:chatapp/Widgets/Buttones/text_button.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/constant.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
@@ -17,13 +19,14 @@ class Login_View extends StatefulWidget {
 class _Login_ViewState extends State<Login_View> {
   TextEditingController passcontroller = TextEditingController();
   TextEditingController emailcontrller = TextEditingController();
+  bool ishidden = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,36 +45,37 @@ class _Login_ViewState extends State<Login_View> {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               custome_textFormField(
+                ishidetext: false,
                 controller: emailcontrller,
-                ispass: false,
                 hintText: 'Email ',
                 customeicon: Icon(Icons.email),
               ),
               custome_textFormField(
+                ishidetext: true,
                 controller: passcontroller,
-                ispass: true,
+                hideicon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        ishidden = !ishidden;
+                      });
+                    },
+                    icon: ishidden
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off)),
                 hintText: 'Password ',
                 customeicon: Icon(Iconsax.password_check),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Forget Password?",
-                        style: Theme.of(context).textTheme.labelLarge,
-                      )),
+                  text_button(),
                 ],
               ),
-              custome_Button(
-                kPrimarrycolor,
-                text: 'LOGIN',
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: elevated_button(),
               ),
-              custome_Button(
-                Colors.black,
-                text: 'LOGIN',
-              ),
+              const outlined_button()
             ],
           ),
         ),

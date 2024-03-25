@@ -4,15 +4,16 @@ import 'package:iconsax/iconsax.dart';
 
 class custome_textFormField extends StatefulWidget {
   custome_textFormField({
-    this.ispass = true,
+    this.hideicon = const SizedBox(),
+    required this.ishidetext,
     required this.hintText,
     required this.customeicon,
     required this.controller,
   });
+  Widget hideicon;
   final String hintText;
   final Icon customeicon;
-  final bool ispass;
-
+  bool ishidetext;
   TextEditingController controller;
 
   @override
@@ -20,27 +21,18 @@ class custome_textFormField extends StatefulWidget {
 }
 
 class _custome_textFormFieldState extends State<custome_textFormField> {
-  bool obscure = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: TextFormField(
-        obscureText: widget.ispass ? obscure : false,
+        obscureText: widget.ishidetext,
         controller: widget.controller,
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: Theme.of(context).textTheme.titleSmall,
           prefixIcon: widget.customeicon,
-          suffixIcon: IconButton(
-              onPressed: () {
-                setState(() {
-                  obscure = !obscure;
-                });
-              },
-              icon: widget.ispass
-                  ? const Icon(Icons.remove_red_eye_rounded)
-                  : const SizedBox()),
+          suffixIcon: widget.hideicon,
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(16),
