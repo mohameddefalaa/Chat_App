@@ -1,8 +1,10 @@
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/Buttones/outlined_button.dart';
 import 'package:chatapp/Widgets/Buttones/text_button.dart';
+import 'package:chatapp/Widgets/Custom_form.dart';
 import 'package:chatapp/Widgets/Custome_line.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
+import 'package:chatapp/Widgets/social;_media.dart';
 import 'package:chatapp/constant.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,7 @@ class _Login_ViewState extends State<Login_View> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -43,90 +45,26 @@ class _Login_ViewState extends State<Login_View> {
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               Text(
-                'Hello  are you ready to chat, Enjoy ',
+                'Log in to your account ',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               custome_form(
                   emailcontrller: emailcontrller,
                   passcontroller: passcontroller),
-
-              // const outlined_button(),
-              const Custome_line(),
+              const Social_media_obtions(),
+              const SizedBox(
+                height: 100,
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          width: 2,
-                          color: Theme.of(context).colorScheme.onBackground),
-                    ),
-                    child: ClipOval(
-                      child: Icon(Icons.facebook_outlined),
-                    ),
-                  ),
+                  const Text("Don't have an account?"),
+                  TextButton(onPressed: () {}, child: const Text('Sign up'))
                 ],
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class custome_form extends StatelessWidget {
-  custome_form({
-    super.key,
-    required this.emailcontrller,
-    required this.passcontroller,
-  });
-
-  final TextEditingController emailcontrller;
-  final TextEditingController passcontroller;
-
-  @override
-  final formkey = GlobalKey<FormState>();
-  Widget build(BuildContext context) {
-    return Form(
-      key: formkey,
-      child: Column(
-        children: [
-          custome_textFormField(
-            hideicon: false,
-            ishidetext: false,
-            controller: emailcontrller,
-            hintText: 'Email ',
-            customeicon: Icon(Icons.email),
-          ),
-          custome_textFormField(
-            ishidetext: true,
-            controller: passcontroller,
-            hideicon: true,
-            hintText: 'Password ',
-            customeicon: Icon(Iconsax.password_check),
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              text_button(),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: elevated_button(
-              onpresed: () {
-                if (formkey.currentState!.validate()) {
-                  print('done');
-                }
-                ;
-              },
-            ),
-          ),
-        ],
       ),
     );
   }
