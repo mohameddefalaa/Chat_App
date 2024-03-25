@@ -1,6 +1,7 @@
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/Buttones/outlined_button.dart';
 import 'package:chatapp/Widgets/Buttones/text_button.dart';
+import 'package:chatapp/Widgets/Custome_line.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/constant.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
@@ -54,16 +55,6 @@ class _Login_ViewState extends State<Login_View> {
                 ishidetext: true,
                 controller: passcontroller,
                 hideicon: true,
-                //
-                // IconButton(
-                //     onPressed: () {
-                //       setState(() {
-                //         ishidden = !ishidden;
-                //       });
-                //     },
-                //     icon: ishidden
-                //         ? const Icon(Icons.visibility)
-                //         : const Icon(Icons.visibility_off)),
                 hintText: 'Password ',
                 customeicon: Icon(Iconsax.password_check),
               ),
@@ -77,7 +68,8 @@ class _Login_ViewState extends State<Login_View> {
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: elevated_button(),
               ),
-              const outlined_button()
+              const outlined_button(),
+              const Custome_line()
             ],
           ),
         ),
