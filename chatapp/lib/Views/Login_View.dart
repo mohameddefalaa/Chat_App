@@ -58,7 +58,7 @@ class _Login_ViewState extends State<Login_View> {
                 Text2: 'Log in With Facebook',
               ),
               const SizedBox(
-                height: 100,
+                height: 80,
               ),
               ishavemessage(
                 text: 'Dont have an account ',

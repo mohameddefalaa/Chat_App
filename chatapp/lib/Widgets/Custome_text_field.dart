@@ -50,6 +50,11 @@ class _custome_textFormFieldState extends State<custome_textFormField> {
             ),
             borderSide: BorderSide(color: kSecondrycolor),
           ),
+          errorBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(16),
+              ),
+              borderSide: BorderSide(color: kSecondrycolor)),
           focusedBorder: OutlineInputBorder(
               borderRadius: const BorderRadius.all(
                 Radius.circular(16),

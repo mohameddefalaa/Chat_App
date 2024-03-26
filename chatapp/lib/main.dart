@@ -1,4 +1,5 @@
 import 'package:chatapp/Views/Login_View.dart';
+import 'package:chatapp/Views/layoutapp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           brightness: Brightness.light,
         ),
-        home: Login_View());
+        home: const layoutapp());
   }
 }
