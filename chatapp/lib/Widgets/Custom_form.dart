@@ -44,6 +44,7 @@ class custome_form extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.0),
             child: elevated_button(
+              text: 'Log In',
               onpresed: () {
                 if (formkey.currentState!.validate()) {
                   print('done');

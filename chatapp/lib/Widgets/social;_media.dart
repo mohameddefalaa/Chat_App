@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 class Social_media_obtions extends StatelessWidget {
   const Social_media_obtions({
     super.key,
+    required this.Text1,
+    required this.Text2,
   });
+  final String Text1;
+  final String Text2;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class Social_media_obtions extends StatelessWidget {
         ),
         outlined_button(
           onpresed: () {},
-          text: 'Log in With Google',
+          text: Text1,
           image: 'assets/icons/search.png',
         ),
         const SizedBox(
@@ -23,7 +27,7 @@ class Social_media_obtions extends StatelessWidget {
         ),
         outlined_button(
           onpresed: () {},
-          text: 'Log in With Facebook ',
+          text: Text2,
           image: 'assets/icons/facebook.png',
         ),
       ],

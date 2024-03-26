@@ -1,8 +1,10 @@
+import 'package:chatapp/Views/sign_up.dart';
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/Buttones/outlined_button.dart';
 import 'package:chatapp/Widgets/Buttones/text_button.dart';
 import 'package:chatapp/Widgets/Custom_form.dart';
 import 'package:chatapp/Widgets/Custome_line.dart';
+import 'package:chatapp/Widgets/custome_final_message.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/Widgets/social;_media.dart';
 import 'package:chatapp/constant.dart';
@@ -51,16 +53,22 @@ class _Login_ViewState extends State<Login_View> {
               custome_form(
                   emailcontrller: emailcontrller,
                   passcontroller: passcontroller),
-              const Social_media_obtions(),
+              const Social_media_obtions(
+                Text1: 'Log in With Google',
+                Text2: 'Log in With Facebook',
+              ),
               const SizedBox(
                 height: 100,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Don't have an account?"),
-                  TextButton(onPressed: () {}, child: const Text('Sign up'))
-                ],
+              ishavemessage(
+                text: 'Dont have an account ',
+                ctextbutton: 'Sign UP',
+                onpresed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return signup_view();
+                  }));
+                },
               )
             ],
           ),
