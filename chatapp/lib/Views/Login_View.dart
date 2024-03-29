@@ -43,7 +43,7 @@ class _Login_ViewState extends State<Login_View> {
                 ],
               ),
               Text(
-                'Welcome Back',
+                ' Back',
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               Text(

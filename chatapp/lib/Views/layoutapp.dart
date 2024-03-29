@@ -9,16 +9,18 @@ class layoutapp extends StatefulWidget {
 
 class _layoutappState extends State<layoutapp> {
   int currentindex = 0;
+  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (index) {
+        onDestinationSelected: (value) {
           setState(() {
-            currentindex = index;
+            currentindex = value;
+            pageController.jumpToPage(value);
           });
         },
-        selectedIndex: currentindex,
+        elevation: 1,
         destinations: const [
           NavigationDestination(icon: Icon(Icons.chat), label: 'chat'),
           NavigationDestination(icon: Icon(Icons.group), label: 'group'),
@@ -27,6 +29,27 @@ class _layoutappState extends State<layoutapp> {
           NavigationDestination(icon: Icon(Icons.settings), label: 'settings'),
         ],
       ),
+      body: PageView(
+          controller: pageController,
+          onPageChanged: (value) {
+            setState(() {
+              currentindex = value;
+            });
+          },
+          children: [
+            Container(
+              color: Colors.red,
+            ),
+            Container(
+              color: Colors.yellow,
+            ),
+            Container(
+              color: Colors.blue,
+            ),
+            Container(
+              color: Colors.green,
+            ),
+          ]),
     );
   }
 }
