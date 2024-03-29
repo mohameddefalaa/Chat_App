@@ -1,3 +1,7 @@
+import 'package:chatapp/home/chat_home_view.dart';
+import 'package:chatapp/home/contact_home_view.dart';
+import 'package:chatapp/home/group_home_view.dart';
+import 'package:chatapp/home/seetings_home_view.dart';
 import 'package:flutter/material.dart';
 
 class layoutapp extends StatefulWidget {
@@ -13,7 +17,21 @@ class _layoutappState extends State<layoutapp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: PageView(
+          controller: pageController,
+          onPageChanged: (value) {
+            setState(() {
+              currentindex = value;
+            });
+          },
+          children: const [
+            Chat_View(),
+            Group_View(),
+            Contact_View(),
+            Seetings_view(),
+          ]),
       bottomNavigationBar: NavigationBar(
+        selectedIndex: currentindex,
         onDestinationSelected: (value) {
           setState(() {
             currentindex = value;
@@ -29,27 +47,6 @@ class _layoutappState extends State<layoutapp> {
           NavigationDestination(icon: Icon(Icons.settings), label: 'settings'),
         ],
       ),
-      body: PageView(
-          controller: pageController,
-          onPageChanged: (value) {
-            setState(() {
-              currentindex = value;
-            });
-          },
-          children: [
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.yellow,
-            ),
-            Container(
-              color: Colors.blue,
-            ),
-            Container(
-              color: Colors.green,
-            ),
-          ]),
     );
   }
 }
