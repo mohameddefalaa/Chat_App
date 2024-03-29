@@ -1,3 +1,4 @@
+import 'package:chatapp/chat/chat_Screen.dart';
 import 'package:flutter/material.dart';
 
 class Chats_body extends StatelessWidget {
@@ -12,8 +13,14 @@ class Chats_body extends StatelessWidget {
       child: Column(children: [
         Expanded(
           child: ListView.builder(itemBuilder: (context, index) {
-            return const Card(
+            return Card(
               child: ListTile(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const Chat_Screen();
+                  }));
+                },
                 title: Text('Mohamed'),
                 subtitle: Text('how are you ?'),
                 leading: CircleAvatar(),
