@@ -9,15 +9,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
-        darkTheme: ThemeData.dark(),
+        darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.red, brightness: Brightness.dark)),
         theme: ThemeData(
-          brightness: Brightness.light,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.light,
+          ),
         ),
         home: const layoutapp());
   }
