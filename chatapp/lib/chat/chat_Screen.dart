@@ -1,3 +1,4 @@
+import 'package:chatapp/Widgets/say.dart';
 import 'package:chatapp/chat/mesage_text_filed.dart';
 import 'package:chatapp/chat/message_card.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,10 @@ class _Chat_ScreenState extends State<Chat_Screen> {
       body: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Message_Card(),
+            Say_Hello(),
+            // Message_Card(),
             Message_Text_filed(),
           ],
         ),

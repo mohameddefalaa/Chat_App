@@ -1,6 +1,7 @@
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
-import 'package:chatapp/chat/chats_body.dart';
+import 'package:chatapp/chat/chat_Screen.dart';
+import 'package:chatapp/chat/ustome_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -61,7 +62,21 @@ class _Chat_ViewState extends State<Chat_View> {
         centerTitle: true,
         title: Text('chats'),
       ),
-      body: Chats_body(),
+      body: Custome_list_tile(
+        ontap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return const Chat_Screen();
+              },
+            ),
+          );
+        },
+        title: 'Mohaemed',
+        subtitle: 'how are you ',
+        nameorimae: 'M',
+        num_unreading_message: 5,
+      ),
     );
   }
 }

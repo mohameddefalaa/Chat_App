@@ -1,3 +1,4 @@
+import 'package:chatapp/chat/ustome_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class Group_View extends StatefulWidget {
@@ -13,6 +14,12 @@ class _Group_ViewState extends State<Group_View> {
     return Scaffold(
       appBar: AppBar(
         title: Text('groups view '),
+      ),
+      body: Custome_list_tile(
+        ontap: () {},
+        title: 'Family',
+        subtitle: "emad: miss all of you ",
+        nameorimae: 'F',
       ),
     );
   }

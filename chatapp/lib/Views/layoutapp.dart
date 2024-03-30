@@ -1,6 +1,6 @@
-import 'package:chatapp/home/chat_home_view.dart';
+import 'package:chatapp/chat/chat_home_view.dart';
 import 'package:chatapp/home/contact_home_view.dart';
-import 'package:chatapp/home/group_home_view.dart';
+import 'package:chatapp/Group/group_home_view.dart';
 import 'package:chatapp/home/seetings_home_view.dart';
 import 'package:flutter/material.dart';
 
