@@ -30,12 +30,12 @@ class _Chat_ScreenState extends State<Chat_Screen> {
           IconButton(onPressed: () {}, icon: const Icon(Iconsax.copy)),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Column(
           children: [
             Message_Card(),
-            const Message_Text_filed(),
+            Message_Text_filed(),
           ],
         ),
       ),

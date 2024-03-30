@@ -2,14 +2,19 @@ import 'package:chatapp/constant.dart';
 import 'package:flutter/material.dart';
 
 class elevated_button extends StatelessWidget {
-  elevated_button({super.key, required this.onpresed, required this.text});
+  elevated_button(
+      {super.key,
+      required this.onpresed,
+      required this.text,
+      required this.color});
   void Function() onpresed;
   final String text;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: kPrimarrycolor,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

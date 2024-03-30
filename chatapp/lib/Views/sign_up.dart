@@ -3,6 +3,7 @@ import 'package:chatapp/Widgets/Custom_form.dart';
 import 'package:chatapp/Widgets/custome_final_message.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/Widgets/social;_media.dart';
+import 'package:chatapp/constant.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -66,6 +67,7 @@ class signup_view extends StatelessWidget {
                         height: 20,
                       ),
                       elevated_button(
+                        color: kPrimarrycolor,
                         onpresed: () {
                           if (formkey.currentState!.validate()) {}
                         },

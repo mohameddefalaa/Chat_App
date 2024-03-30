@@ -1,6 +1,7 @@
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/Buttones/text_button.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
+import 'package:chatapp/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -44,6 +45,7 @@ class custome_form extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.0),
             child: elevated_button(
+              color: kPrimarrycolor,
               text: 'Log In',
               onpresed: () {
                 if (formkey.currentState!.validate()) {
