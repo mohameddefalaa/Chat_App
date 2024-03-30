@@ -1,4 +1,5 @@
 import 'package:chatapp/chat/mesage_text_filed.dart';
+import 'package:chatapp/chat/message_card.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -17,7 +18,7 @@ class _Chat_ScreenState extends State<Chat_Screen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Mohamed'),
+            const Text('Mohamed'),
             Text(
               'Online',
               style: Theme.of(context).textTheme.labelMedium,
@@ -25,11 +26,19 @@ class _Chat_ScreenState extends State<Chat_Screen> {
           ],
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Iconsax.trash)),
-          IconButton(onPressed: () {}, icon: Icon(Iconsax.copy)),
+          IconButton(onPressed: () {}, icon: const Icon(Iconsax.trash)),
+          IconButton(onPressed: () {}, icon: const Icon(Iconsax.copy)),
         ],
       ),
-      body: const Message_Text_filed(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Message_Card(),
+            const Message_Text_filed(),
+          ],
+        ),
+      ),
     );
   }
 }
