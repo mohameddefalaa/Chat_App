@@ -29,14 +29,14 @@ class custome_form extends StatelessWidget {
             ishidetext: false,
             controller: emailcontrller,
             hintText: 'Email ',
-            customeicon: Icon(Icons.email),
+            customeicon: const Icon(Icons.email),
           ),
           custome_textFormField(
             ishidetext: true,
             controller: passcontroller,
             hideicon: true,
             hintText: 'Password ',
-            customeicon: Icon(Iconsax.password_check),
+            customeicon: const Icon(Iconsax.password_check),
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -50,12 +50,36 @@ class custome_form extends StatelessWidget {
               color: kPrimarrycolor,
               text: 'Log In',
               onpresed: () {
-                if (formkey.currentState!.validate()) {}
+                if (formkey.currentState!.validate()) {
+                  try {
+                    login_user();
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('No user found for that email.'),
+                        ),
+                      );
+                    } else if (e.code == 'wrong-password') {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content:
+                              Text('Wrong password provided for that user.'),
+                        ),
+                      );
+                    }
+                  }
+                }
               },
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<UserCredential> login_user() async {
+    return await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontrller.text, password: passcontroller.text);
   }
 }
