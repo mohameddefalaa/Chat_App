@@ -3,8 +3,11 @@ import 'package:chatapp/Widgets/Custom_form.dart';
 import 'package:chatapp/Widgets/custome_final_message.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/Widgets/social;_media.dart';
+import 'package:chatapp/chat/chat_home_view.dart';
 import 'package:chatapp/constant.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -69,7 +72,40 @@ class signup_view extends StatelessWidget {
                       elevated_button(
                         color: kPrimarrycolor,
                         onpresed: () {
-                          if (formkey.currentState!.validate()) {}
+                          if (formkey.currentState!.validate()) {
+                            try {
+                              signup_user();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("create account is done....  "),
+                                ),
+                              );
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        "The password provided is too weak."),
+                                  ),
+                                );
+                              } else if (e.code == 'email-already-in-use') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        "The account already exists for that email."),
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      "we have error which is ${e.toString()}"),
+                                ),
+                              );
+                            }
+                            ;
+                          }
                         },
                         text: 'Sign Up',
                       ),
@@ -97,6 +133,13 @@ class signup_view extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> signup_user() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: Econtroller.text,
+      password: Pcontroller.text,
     );
   }
 }
