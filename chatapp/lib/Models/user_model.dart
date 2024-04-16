@@ -1,12 +1,12 @@
 class UserModel {
-  String? id;
-  String name;
-  String image;
-  String createdat;
-  String LasteActivated;
-  bool online;
-  String about;
-  String catchtoken;
+  final String? id;
+  final String name;
+  final String image;
+  final String createdat;
+  final String LasteActivated;
+  final bool online;
+  final String about;
+  final String catchtoken;
 
   UserModel(
       {required this.id,
