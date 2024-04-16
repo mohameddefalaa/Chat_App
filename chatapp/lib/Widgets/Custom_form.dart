@@ -1,8 +1,10 @@
+import 'package:chatapp/Models/user_model.dart';
 import 'package:chatapp/Views/layoutapp.dart';
 import 'package:chatapp/Widgets/Buttones/elevated_button.dart';
 import 'package:chatapp/Widgets/Buttones/text_button.dart';
 import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/constant.dart';
+import 'package:chatapp/firebase/firebase_Auth/fire_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -49,26 +51,19 @@ class custome_form extends StatelessWidget {
             child: elevated_button(
               color: kPrimarrycolor,
               text: 'Log In',
-              onpresed: () {
+              onpresed: () async {
                 if (formkey.currentState!.validate()) {
-                  try {
-                    login_user();
-                  } on FirebaseAuthException catch (e) {
-                    if (e.code == 'user-not-found') {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('No user found for that email.'),
-                        ),
-                      );
-                    } else if (e.code == 'wrong-password') {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text('Wrong password provided for that user.'),
-                        ),
-                      );
-                    }
-                  }
+                  await FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: emailcontrller.text,
+                          password: passcontroller.text)
+                      .then((value) => print('done'))
+                      .onError((error, stackTrace) =>
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(error.toString()),
+                            ),
+                          ));
                 }
               },
             ),
@@ -76,10 +71,5 @@ class custome_form extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<UserCredential> login_user() async {
-    return await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailcontrller.text, password: passcontroller.text);
   }
 }

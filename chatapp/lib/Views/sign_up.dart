@@ -5,6 +5,7 @@ import 'package:chatapp/Widgets/custome_text_field.dart';
 import 'package:chatapp/Widgets/social;_media.dart';
 import 'package:chatapp/chat/chat_home_view.dart';
 import 'package:chatapp/constant.dart';
+import 'package:chatapp/firebase/firebase_Auth/fire_auth.dart';
 import 'package:chatapp/helpers/get_App_icon.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -74,7 +75,13 @@ class signup_view extends StatelessWidget {
                         onpresed: () {
                           if (formkey.currentState!.validate()) {
                             try {
-                              signup_user();
+                              signup_user().then((value) {
+                                if (Ncontroller.text.isNotEmpty) {
+                                  FirebaseAuth.instance.currentUser!
+                                      .updateDisplayName(Ncontroller.text)
+                                      .then((value) => fireauth.createuser());
+                                }
+                              });
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text("create account is done....  "),
