@@ -10,6 +10,7 @@ class fireauth {
 
   static Future createuser() async {
     UserModel userModel = UserModel(
+        email: user.email ?? "",
         id: user.uid,
         name: user.displayName ?? "",
         image: "",

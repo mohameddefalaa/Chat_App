@@ -1,3 +1,4 @@
+import 'package:chatapp/firebase/firebase_Auth/fire_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -21,12 +22,12 @@ class _Seetings_viewState extends State<Seetings_view> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const ListTile(
+                ListTile(
                   minVerticalPadding: 40,
                   leading: CircleAvatar(
                     maxRadius: 30,
                   ),
-                  title: Text('Name'),
+                  title: Text(fireauth.user.displayName!),
                   trailing: Icon(Iconsax.scan_barcode),
                 ),
                 Card(

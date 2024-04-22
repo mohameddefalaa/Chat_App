@@ -7,9 +7,11 @@ class UserModel {
   final bool online;
   final String about;
   final String catchtoken;
+  final String email;
 
   UserModel(
-      {required this.id,
+      {required this.email,
+      required this.id,
       required this.name,
       required this.image,
       required this.createdat,
@@ -20,6 +22,7 @@ class UserModel {
 
   factory UserModel.fromjson(Map<String, dynamic> jsondata) {
     return UserModel(
+        email: jsondata['email'],
         id: jsondata['id'],
         name: jsondata['name'],
         image: jsondata['image'],
@@ -31,6 +34,7 @@ class UserModel {
   }
   Map<String, dynamic> tojson() {
     return {
+      'email': email,
       'id': id,
       'name': name,
       'image': image,

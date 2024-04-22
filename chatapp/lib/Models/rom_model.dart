@@ -28,7 +28,7 @@ class RooModel {
       "lastMessage": lastMessage,
       'lastMessagetime': lastMessageTime,
       'createdAt': createdAt,
-      'members': createdAt
+      'members': members
     };
   }
 }
