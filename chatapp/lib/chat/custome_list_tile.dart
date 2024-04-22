@@ -1,4 +1,5 @@
 import 'package:chatapp/Models/rom_model.dart';
+import 'package:chatapp/chat/chat_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,23 +49,9 @@ class _Custome_list_tileState extends State<Custome_list_tile> {
                   return ListView.builder(
                       itemCount: items.length,
                       itemBuilder: (context, index) {
-                        return Card(
-                          child: ListTile(
-                            onTap: widget.ontap,
-                            title: Text(widget.title),
-                            subtitle: Text(widget.subtitle),
-                            leading: CircleAvatar(
-                              child: Text(widget.nameorimae),
-                            ),
-                            trailing: Badge(
-                              label: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                                child: Text(
-                                    widget.num_unreading_message.toString()),
-                              ),
-                              largeSize: 30,
-                            ),
-                          ),
+                        return chat_card(
+                          widget: widget,
+                          item: items[index],
                         );
                       });
                 } else {
